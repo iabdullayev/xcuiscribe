@@ -1,0 +1,1064 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CB9605472DA461F100ECB202 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9605462DA461F100ECB202 /* Cocoa.framework */; };
+		CB9605492DA461F100ECB202 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9605482DA461F100ECB202 /* XcodeKit.framework */; };
+		CB9605532DA461F100ECB202 /* XCUITestGeneratorExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CB9605442DA461F100ECB202 /* XCUITestGeneratorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CB9605772DA4B61F00ECB202 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CB9605762DA4B61F00ECB202 /* README.md */; };
+		CB9605922DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9605882DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework */; };
+		CB96059D2DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9605882DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework */; };
+		CB96059E2DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB9605882DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CB9605AD2DA4C1A700ECB202 /* XCUITestGeneratorShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9605882DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework */; };
+		CB9605AE2DA4C1A700ECB202 /* XCUITestGeneratorShared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB9605882DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CB9605222DA44EC800ECB202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9605082DA44EC300ECB202 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB96050F2DA44EC300ECB202;
+			remoteInfo = XCUITestGeneratorApp;
+		};
+		CB96052C2DA44EC800ECB202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9605082DA44EC300ECB202 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB96050F2DA44EC300ECB202;
+			remoteInfo = XCUITestGeneratorApp;
+		};
+		CB9605512DA461F100ECB202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9605082DA44EC300ECB202 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB9605432DA461F100ECB202;
+			remoteInfo = XCUITestGeneratorExtension;
+		};
+		CB9605932DA4BB6C00ECB202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9605082DA44EC300ECB202 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB9605872DA4BB6C00ECB202;
+			remoteInfo = XCUITestGeneratorShared;
+		};
+		CB9605952DA4BB6C00ECB202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9605082DA44EC300ECB202 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB96050F2DA44EC300ECB202;
+			remoteInfo = XCUITestGeneratorApp;
+		};
+		CB96059B2DA4BB6C00ECB202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9605082DA44EC300ECB202 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB9605872DA4BB6C00ECB202;
+			remoteInfo = XCUITestGeneratorShared;
+		};
+		CB9605AF2DA4C1A700ECB202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9605082DA44EC300ECB202 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB9605872DA4BB6C00ECB202;
+			remoteInfo = XCUITestGeneratorShared;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CB9605582DA461F100ECB202 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CB9605532DA461F100ECB202 /* XCUITestGeneratorExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605A32DA4BB6C00ECB202 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CB96059E2DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605B12DA4C1A800ECB202 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CB9605AE2DA4C1A700ECB202 /* XCUITestGeneratorShared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CB9605102DA44EC300ECB202 /* XCUITestGeneratorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XCUITestGeneratorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB9605212DA44EC800ECB202 /* XCUITestGeneratorAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCUITestGeneratorAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB96052B2DA44EC800ECB202 /* XCUITestGeneratorAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCUITestGeneratorAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB9605442DA461F100ECB202 /* XCUITestGeneratorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XCUITestGeneratorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB9605462DA461F100ECB202 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CB9605482DA461F100ECB202 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
+		CB9605762DA4B61F00ECB202 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CB9605882DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XCUITestGeneratorShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB9605912DA4BB6C00ECB202 /* XCUITestGeneratorSharedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCUITestGeneratorSharedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CB9605542DA461F100ECB202 /* Exceptions for "XCUITestGeneratorExtension" folder in "XCUITestGeneratorExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CB9605432DA461F100ECB202 /* XCUITestGeneratorExtension */;
+		};
+		CB96059F2DA4BB6C00ECB202 /* Exceptions for "XCUITestGeneratorShared" folder in "XCUITestGeneratorShared" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			publicHeaders = (
+				XCUITestGeneratorShared.h,
+			);
+			target = CB9605872DA4BB6C00ECB202 /* XCUITestGeneratorShared */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CB9605122DA44EC300ECB202 /* XCUITestGeneratorApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = XCUITestGeneratorApp;
+			sourceTree = "<group>";
+		};
+		CB9605242DA44EC800ECB202 /* XCUITestGeneratorAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = XCUITestGeneratorAppTests;
+			sourceTree = "<group>";
+		};
+		CB96052E2DA44EC800ECB202 /* XCUITestGeneratorAppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = XCUITestGeneratorAppUITests;
+			sourceTree = "<group>";
+		};
+		CB96054A2DA461F100ECB202 /* XCUITestGeneratorExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CB9605542DA461F100ECB202 /* Exceptions for "XCUITestGeneratorExtension" folder in "XCUITestGeneratorExtension" target */,
+			);
+			path = XCUITestGeneratorExtension;
+			sourceTree = "<group>";
+		};
+		CB9605892DA4BB6C00ECB202 /* XCUITestGeneratorShared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CB96059F2DA4BB6C00ECB202 /* Exceptions for "XCUITestGeneratorShared" folder in "XCUITestGeneratorShared" target */,
+			);
+			path = XCUITestGeneratorShared;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB96050D2DA44EC300ECB202 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB96059D2DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB96051E2DA44EC800ECB202 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605282DA44EC800ECB202 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605412DA461F100ECB202 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB9605AD2DA4C1A700ECB202 /* XCUITestGeneratorShared.framework in Frameworks */,
+				CB9605472DA461F100ECB202 /* Cocoa.framework in Frameworks */,
+				CB9605492DA461F100ECB202 /* XcodeKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605852DA4BB6C00ECB202 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB96058E2DA4BB6C00ECB202 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB9605922DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB9605072DA44EC300ECB202 = {
+			isa = PBXGroup;
+			children = (
+				CB9605122DA44EC300ECB202 /* XCUITestGeneratorApp */,
+				CB9605242DA44EC800ECB202 /* XCUITestGeneratorAppTests */,
+				CB96052E2DA44EC800ECB202 /* XCUITestGeneratorAppUITests */,
+				CB96054A2DA461F100ECB202 /* XCUITestGeneratorExtension */,
+				CB9605762DA4B61F00ECB202 /* README.md */,
+				CB9605892DA4BB6C00ECB202 /* XCUITestGeneratorShared */,
+				CB9605452DA461F100ECB202 /* Frameworks */,
+				CB9605112DA44EC300ECB202 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB9605112DA44EC300ECB202 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB9605102DA44EC300ECB202 /* XCUITestGeneratorApp.app */,
+				CB9605212DA44EC800ECB202 /* XCUITestGeneratorAppTests.xctest */,
+				CB96052B2DA44EC800ECB202 /* XCUITestGeneratorAppUITests.xctest */,
+				CB9605442DA461F100ECB202 /* XCUITestGeneratorExtension.appex */,
+				CB9605882DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework */,
+				CB9605912DA4BB6C00ECB202 /* XCUITestGeneratorSharedTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB9605452DA461F100ECB202 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB9605462DA461F100ECB202 /* Cocoa.framework */,
+				CB9605482DA461F100ECB202 /* XcodeKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CB9605832DA4BB6C00ECB202 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CB96050F2DA44EC300ECB202 /* XCUITestGeneratorApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB9605352DA44EC800ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorApp" */;
+			buildPhases = (
+				CB96050C2DA44EC300ECB202 /* Sources */,
+				CB96050D2DA44EC300ECB202 /* Frameworks */,
+				CB96050E2DA44EC300ECB202 /* Resources */,
+				CB9605582DA461F100ECB202 /* Embed Foundation Extensions */,
+				CB9605A32DA4BB6C00ECB202 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB9605522DA461F100ECB202 /* PBXTargetDependency */,
+				CB96059C2DA4BB6C00ECB202 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CB9605122DA44EC300ECB202 /* XCUITestGeneratorApp */,
+			);
+			name = XCUITestGeneratorApp;
+			packageProductDependencies = (
+			);
+			productName = XCUITestGeneratorApp;
+			productReference = CB9605102DA44EC300ECB202 /* XCUITestGeneratorApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CB9605202DA44EC800ECB202 /* XCUITestGeneratorAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB9605382DA44EC800ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorAppTests" */;
+			buildPhases = (
+				CB96051D2DA44EC800ECB202 /* Sources */,
+				CB96051E2DA44EC800ECB202 /* Frameworks */,
+				CB96051F2DA44EC800ECB202 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB9605232DA44EC800ECB202 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CB9605242DA44EC800ECB202 /* XCUITestGeneratorAppTests */,
+			);
+			name = XCUITestGeneratorAppTests;
+			packageProductDependencies = (
+			);
+			productName = XCUITestGeneratorAppTests;
+			productReference = CB9605212DA44EC800ECB202 /* XCUITestGeneratorAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CB96052A2DA44EC800ECB202 /* XCUITestGeneratorAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB96053B2DA44EC800ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorAppUITests" */;
+			buildPhases = (
+				CB9605272DA44EC800ECB202 /* Sources */,
+				CB9605282DA44EC800ECB202 /* Frameworks */,
+				CB9605292DA44EC800ECB202 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB96052D2DA44EC800ECB202 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CB96052E2DA44EC800ECB202 /* XCUITestGeneratorAppUITests */,
+			);
+			name = XCUITestGeneratorAppUITests;
+			packageProductDependencies = (
+			);
+			productName = XCUITestGeneratorAppUITests;
+			productReference = CB96052B2DA44EC800ECB202 /* XCUITestGeneratorAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		CB9605432DA461F100ECB202 /* XCUITestGeneratorExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB9605552DA461F100ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorExtension" */;
+			buildPhases = (
+				CB9605402DA461F100ECB202 /* Sources */,
+				CB9605412DA461F100ECB202 /* Frameworks */,
+				CB9605422DA461F100ECB202 /* Resources */,
+				CB9605B12DA4C1A800ECB202 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB9605B02DA4C1A700ECB202 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CB96054A2DA461F100ECB202 /* XCUITestGeneratorExtension */,
+			);
+			name = XCUITestGeneratorExtension;
+			packageProductDependencies = (
+			);
+			productName = XCUITestGeneratorExtension;
+			productReference = CB9605442DA461F100ECB202 /* XCUITestGeneratorExtension.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
+		CB9605872DA4BB6C00ECB202 /* XCUITestGeneratorShared */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB9605A02DA4BB6C00ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorShared" */;
+			buildPhases = (
+				CB9605832DA4BB6C00ECB202 /* Headers */,
+				CB9605842DA4BB6C00ECB202 /* Sources */,
+				CB9605852DA4BB6C00ECB202 /* Frameworks */,
+				CB9605862DA4BB6C00ECB202 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CB9605892DA4BB6C00ECB202 /* XCUITestGeneratorShared */,
+			);
+			name = XCUITestGeneratorShared;
+			packageProductDependencies = (
+			);
+			productName = XCUITestGeneratorShared;
+			productReference = CB9605882DA4BB6C00ECB202 /* XCUITestGeneratorShared.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CB9605902DA4BB6C00ECB202 /* XCUITestGeneratorSharedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB9605A42DA4BB6C00ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorSharedTests" */;
+			buildPhases = (
+				CB96058D2DA4BB6C00ECB202 /* Sources */,
+				CB96058E2DA4BB6C00ECB202 /* Frameworks */,
+				CB96058F2DA4BB6C00ECB202 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB9605942DA4BB6C00ECB202 /* PBXTargetDependency */,
+				CB9605962DA4BB6C00ECB202 /* PBXTargetDependency */,
+			);
+			name = XCUITestGeneratorSharedTests;
+			packageProductDependencies = (
+			);
+			productName = XCUITestGeneratorSharedTests;
+			productReference = CB9605912DA4BB6C00ECB202 /* XCUITestGeneratorSharedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB9605082DA44EC300ECB202 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					CB96050F2DA44EC300ECB202 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					CB9605202DA44EC800ECB202 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = CB96050F2DA44EC300ECB202;
+					};
+					CB96052A2DA44EC800ECB202 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = CB96050F2DA44EC300ECB202;
+					};
+					CB9605432DA461F100ECB202 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					CB9605872DA4BB6C00ECB202 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					CB9605902DA4BB6C00ECB202 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = CB96050F2DA44EC300ECB202;
+					};
+				};
+			};
+			buildConfigurationList = CB96050B2DA44EC300ECB202 /* Build configuration list for PBXProject "XCUITestGeneratorApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB9605072DA44EC300ECB202;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = CB9605112DA44EC300ECB202 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB96050F2DA44EC300ECB202 /* XCUITestGeneratorApp */,
+				CB9605202DA44EC800ECB202 /* XCUITestGeneratorAppTests */,
+				CB96052A2DA44EC800ECB202 /* XCUITestGeneratorAppUITests */,
+				CB9605432DA461F100ECB202 /* XCUITestGeneratorExtension */,
+				CB9605872DA4BB6C00ECB202 /* XCUITestGeneratorShared */,
+				CB9605902DA4BB6C00ECB202 /* XCUITestGeneratorSharedTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB96050E2DA44EC300ECB202 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB9605772DA4B61F00ECB202 /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB96051F2DA44EC800ECB202 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605292DA44EC800ECB202 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605422DA461F100ECB202 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605862DA4BB6C00ECB202 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB96058F2DA4BB6C00ECB202 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB96050C2DA44EC300ECB202 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB96051D2DA44EC800ECB202 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605272DA44EC800ECB202 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605402DA461F100ECB202 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9605842DA4BB6C00ECB202 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB96058D2DA4BB6C00ECB202 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB9605232DA44EC800ECB202 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB96050F2DA44EC300ECB202 /* XCUITestGeneratorApp */;
+			targetProxy = CB9605222DA44EC800ECB202 /* PBXContainerItemProxy */;
+		};
+		CB96052D2DA44EC800ECB202 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB96050F2DA44EC300ECB202 /* XCUITestGeneratorApp */;
+			targetProxy = CB96052C2DA44EC800ECB202 /* PBXContainerItemProxy */;
+		};
+		CB9605522DA461F100ECB202 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB9605432DA461F100ECB202 /* XCUITestGeneratorExtension */;
+			targetProxy = CB9605512DA461F100ECB202 /* PBXContainerItemProxy */;
+		};
+		CB9605942DA4BB6C00ECB202 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB9605872DA4BB6C00ECB202 /* XCUITestGeneratorShared */;
+			targetProxy = CB9605932DA4BB6C00ECB202 /* PBXContainerItemProxy */;
+		};
+		CB9605962DA4BB6C00ECB202 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB96050F2DA44EC300ECB202 /* XCUITestGeneratorApp */;
+			targetProxy = CB9605952DA4BB6C00ECB202 /* PBXContainerItemProxy */;
+		};
+		CB96059C2DA4BB6C00ECB202 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB9605872DA4BB6C00ECB202 /* XCUITestGeneratorShared */;
+			targetProxy = CB96059B2DA4BB6C00ECB202 /* PBXContainerItemProxy */;
+		};
+		CB9605B02DA4C1A700ECB202 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB9605872DA4BB6C00ECB202 /* XCUITestGeneratorShared */;
+			targetProxy = CB9605AF2DA4C1A700ECB202 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CB9605332DA44EC800ECB202 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CB9605342DA44EC800ECB202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		CB9605362DA44EC800ECB202 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = XCUITestGeneratorApp/XCUITestGeneratorApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"XCUITestGeneratorApp/Preview Content\"";
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CB9605372DA44EC800ECB202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = XCUITestGeneratorApp/XCUITestGeneratorApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"XCUITestGeneratorApp/Preview Content\"";
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CB9605392DA44EC800ECB202 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XCUITestGeneratorApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XCUITestGeneratorApp";
+			};
+			name = Debug;
+		};
+		CB96053A2DA44EC800ECB202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XCUITestGeneratorApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XCUITestGeneratorApp";
+			};
+			name = Release;
+		};
+		CB96053C2DA44EC800ECB202 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = XCUITestGeneratorApp;
+			};
+			name = Debug;
+		};
+		CB96053D2DA44EC800ECB202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = XCUITestGeneratorApp;
+			};
+			name = Release;
+		};
+		CB9605562DA461F100ECB202 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = XCUITestGeneratorExtension/XCUITestGeneratorExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XCUITestGeneratorExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = XCUITestGeneratorExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorApp.XCUITestGeneratorExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CB9605572DA461F100ECB202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = XCUITestGeneratorExtension/XCUITestGeneratorExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XCUITestGeneratorExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = XCUITestGeneratorExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorApp.XCUITestGeneratorExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CB9605A12DA4BB6C00ECB202 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorApp.XCUITestGeneratorShared;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CB9605A22DA4BB6C00ECB202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorApp.XCUITestGeneratorShared;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CB9605A52DA4BB6C00ECB202 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorApp.XCUITestGeneratorSharedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XCUITestGeneratorApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XCUITestGeneratorApp";
+			};
+			name = Debug;
+		};
+		CB9605A62DA4BB6C00ECB202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DKU76U6ZGY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demoProject.XCUITestGeneratorApp.XCUITestGeneratorSharedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XCUITestGeneratorApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XCUITestGeneratorApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB96050B2DA44EC300ECB202 /* Build configuration list for PBXProject "XCUITestGeneratorApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB9605332DA44EC800ECB202 /* Debug */,
+				CB9605342DA44EC800ECB202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB9605352DA44EC800ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB9605362DA44EC800ECB202 /* Debug */,
+				CB9605372DA44EC800ECB202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB9605382DA44EC800ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB9605392DA44EC800ECB202 /* Debug */,
+				CB96053A2DA44EC800ECB202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB96053B2DA44EC800ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB96053C2DA44EC800ECB202 /* Debug */,
+				CB96053D2DA44EC800ECB202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB9605552DA461F100ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB9605562DA461F100ECB202 /* Debug */,
+				CB9605572DA461F100ECB202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB9605A02DA4BB6C00ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorShared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB9605A12DA4BB6C00ECB202 /* Debug */,
+				CB9605A22DA4BB6C00ECB202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB9605A42DA4BB6C00ECB202 /* Build configuration list for PBXNativeTarget "XCUITestGeneratorSharedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB9605A52DA4BB6C00ECB202 /* Debug */,
+				CB9605A62DA4BB6C00ECB202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB9605082DA44EC300ECB202 /* Project object */;
+}
