@@ -49,6 +49,11 @@ public class XCUITestGenerator {
     /// - Returns: XCUITest code as a string
     /// - Throws: TestGenerationError if generation fails
     public func generateTests(for viewInfo: SwiftUIAnalyzer.ViewInfo, options: GenerationOptions = .default) throws -> String {
+        // Validate view info
+        if viewInfo.name.isEmpty {
+            throw TestGenerationError.invalidViewInfo("View name cannot be empty")
+        }
+        
         var testCode =  """
         import XCTest
         
@@ -74,7 +79,7 @@ public class XCUITestGenerator {
             testCode += "\n        // No UI elements found to test\n"
         } else {
             for element in viewInfo.elements {
-                let identifier = element.identifier ?? self.identifierForElement(element)
+                let identifier = element.identifier ?? identifierForElement(element)
                 
                 if !identifier.isEmpty {
                     let elementType = xcuiElementType(for: element.type)
@@ -97,12 +102,12 @@ public class XCUITestGenerator {
         testCode += generateInteractionTests(for: viewInfo)
         
         // If there are state variables that affect the UI, generate state change tests
-        if !viewInfo.stateVariables.isEmpty {
+        if !viewInfo.stateVariables.isEmpty && options.includeStateTests {
             testCode += generateStateChangeTests(for: viewInfo)
         }
         
         // If it's a navigation view, generate navigation tests
-        if viewInfo.isNavigationView {
+        if viewInfo.isNavigationView && options.includeNavigationTests {
             testCode += generateNavigationTests(for: viewInfo)
         }
         
@@ -112,7 +117,9 @@ public class XCUITestGenerator {
         """
         
         // Add suggested accessibility identifiers if missing
-        testCode += generateAccessibilityIdentifierSuggestions(for: viewInfo)
+        if options.includeSuggestions {
+            testCode += generateAccessibilityIdentifierSuggestions(for: viewInfo)
+        }
         
         return testCode
     }
@@ -121,37 +128,38 @@ public class XCUITestGenerator {
     
     /// Generates a default identifier for an element if none is provided.
     private func identifierForElement(_ element: SwiftUIAnalyzer.UIElement) -> String {
-        let words = element.label
+        // Sanitize label to create a valid identifier
+        let sanitizedWords = element.label
             .lowercased()
-            .components(separatedBy: " ")
-            .replacingOccurrences(of: " ", with: "_")
+            .components(separatedBy: .whitespacesAndNewlines)
+            .filter { !$0.isEmpty }
+        
+        let sanitizedLabel = sanitizedWords.joined(separator: "_")
             .replacingOccurrences(of: "[^a-z0-9_]", with: "", options: .regularExpression)
         
+        // Generate appropriate identifier based on element type
         switch element.type {
         case .button:
             return "\(sanitizedLabel)_button"
         case .textField:
-            return words.map { String($0.prefix(1)) }.joined() + "_field"
+            return "\(sanitizedLabel)_field"
         case .secureField:
-            return words.map { String($0.prefix(1)) }.joined() + "_sf"
+            return "\(sanitizedLabel)_secure_field"
         case .text:
-            return words.map { String($0.prefix(1)) }.joined() + "_text"
+            return "\(sanitizedLabel)_text"
         case .toggle:
-            return words.map { String($0.prefix(1)) }.joined() + "_toggle"
+            return "\(sanitizedLabel)_toggle"
         case .picker:
-            return words.map { String($0.prefix(1)) }.joined() + "_picker"
+            return "\(sanitizedLabel)_picker"
         case .slider:
-            return words.map { String($0.prefix(1)) }.joined() + "_slider"
+            return "\(sanitizedLabel)_slider"
         case .navigationLink:
-            return words.map { String($0.prefix(1)) }.joined() + "_link"
+            return "\(sanitizedLabel)_link"
         case .list:
-            return words.map { String($0.prefix(1)) }.joined() + "_list"
+            return "\(sanitizedLabel)_list"
         case .custom(let customType):
-            return words.map { String($0.prefix(1)) }.joined() + "_\(customType.lowercased())"
+            return "\(sanitizedLabel)_\(customType.lowercased())"
         }
-        
-        let sanitizedLabel = words.joined(separator: "")
-        return "\(sanitizedLabel)_\(String(describing: element.type).lowercased())"
     }
     
     /// Returns the XCUIElement type string for a UI element type.
@@ -162,6 +170,7 @@ public class XCUITestGenerator {
         case .button, .navigationLink:
             return "button"
         case .textField:
+            return "textField"
         case .secureField:
             return "secureTextField"
         case .text:
@@ -199,14 +208,13 @@ public class XCUITestGenerator {
                 let identifier = textField.identifier ?? self.identifierForElement(textField)
                 let elementType = textField.type == .textField ? "textField" : "secureTextField"
                 let text = "test input"
-                    interactionTests += """
+                interactionTests += """
                 
                     // Test input for \(textField.label)
                     let \(identifier)Field = app.\(elementType)s["\(identifier)"]
                     XCTAssertTrue(\(identifier)Field.exists)
                     \(identifier)Field.tap()
-                    \(identifier)Field.typeText("test input")
-                    XCTAssertEqual(\(identifier)Field.value as? String, "\(text)")
+                    \(identifier)Field.typeText("\(text)")
                     // Verify field contains text - note that secure fields won't show the actual text
                 """
             }
@@ -231,7 +239,7 @@ public class XCUITestGenerator {
             
             for button in buttons {
                 let identifier = button.identifier ?? self.identifierForElement(button)
-                    interactionTests += """
+                interactionTests += """
 
                     // Test tap on \(button.label) button
                     let \(identifier) = app.buttons["\(identifier)"]

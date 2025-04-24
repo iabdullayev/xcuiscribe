@@ -1,5 +1,4 @@
-swift
-import XCTest
+import Foundation
 
 /// A class responsible for generating unit tests for Swift code.
 public class UnitTestGenerator {

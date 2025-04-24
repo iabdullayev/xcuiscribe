@@ -2,44 +2,52 @@ import Foundation
 import XcodeKit
 import XCUITestGeneratorShared
 
-/// The main entry point for the Xcode Source Editor Extension
-class SourceEditorExtension: NSObject, XCSourceEditorExtension {
-    
-    private var commandManager: CommandManager?
-    
-    /// Called when the extension is loaded
-    func extensionDidFinishLaunching() {
-        // Setup code when the extension is loaded
-        commandManager = CommandManager()
-        setupLogging()
-    }
-    
-    /// Called when the extension is about to be unloaded
-    func extensionWillFinishLaunching() {
-        // Clean up any resources created by the extension
-    }
-    
-    /// Perform a command with the given invocation
-    func sourceEditor(_ editor: XCSourceEditorCommandInvocation, performCommand commandIdentifier: String, completionHandler: @escaping (Error?) -> Void) {
-        commandManager?.perform(with: editor, completionHandler: completionHandler)
-    }
-    
-    // MARK: - Private Helper Methods
-    
-    /// Setup logging for the extension
-    private func setupLogging() {
-        let logFile = FileManager.default.temporaryDirectory.appendingPathComponent("XCUITestGenerator.log")
-        freopen(logFile.path, "a+", stderr)
-    }
-}
-
-/// Command handler for the extension
+/// Command manager responsible for handling Xcode extension commands
 class CommandManager: NSObject, XCSourceEditorCommand {
+    
+    /// Possible errors during command execution
+    enum CommandError: Error, LocalizedError {
+        case bufferAccessFailure
+        case notSwiftUIFile
+        case analysisFailure(String)
+        case apiKeyMissing
+        case copilotApiFailure(String)
+        case copilotRateLimitExceeded
+        case networkFailure(String)
+        
+        var errorDescription: String? {
+            switch self {
+            case .bufferAccessFailure:
+                return "Failed to access the Xcode editor buffer"
+            case .notSwiftUIFile:
+                return "This doesn't appear to be a SwiftUI file. The extension works only with SwiftUI views."
+            case .analysisFailure(let reason):
+                return "Failed to analyze SwiftUI code: \(reason)"
+            case .apiKeyMissing:
+                return "GitHub Copilot API key not configured. Please run the container app to set up your API key."
+            case .copilotApiFailure(let reason):
+                return "Copilot API error: \(reason)"
+            case .copilotRateLimitExceeded:
+                return "Copilot API rate limit exceeded. Please try again later."
+            case .networkFailure(let reason):
+                return "Network error: \(reason)"
+            }
+        }
+    }
+    
+    // MARK: - Properties
+    
+    private let analyzer = SwiftUIAnalyzer()
+    private let generator = XCUITestGenerator()
+    private let codeAnalyzer = CodeAnalyzer()
+    private let unitTestGenerator = UnitTestGenerator()
+    
+    // MARK: - XCSourceEditorCommand
     
     /// Perform the command with the given invocation
     /// - Parameters:
     ///   - invocation: The command invocation
-    ///   - completionHandler: Completion handler called when done
+    ///   - completionHandler: The completion handler to call when done
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) {
         let commandIdentifier = invocation.commandIdentifier
         
@@ -53,7 +61,7 @@ class CommandManager: NSObject, XCSourceEditorCommand {
         }
     }
     
-    // MARK: - Command Implementations
+    // MARK: - Command Implementation
     
     /// Generate XCUITests for the current SwiftUI view
     /// - Parameters:
@@ -68,14 +76,14 @@ class CommandManager: NSObject, XCSourceEditorCommand {
             return
         }
         
-        let analyzer = SwiftUIAnalyzer()
         let analysisResult = analyzer.analyze(swiftUICode)
         
         switch analysisResult {
         case .success(let viewInfo):
-            let generator = XCUITestGenerator()
             do {
+                // Generate tests using our local generator
                 let testCode = try generator.generateTests(for: viewInfo)
+                
                 buffer.lines.add("\n// MARK: - Generated XCUITests\n")
                 buffer.lines.add("// Suggestion: Move these tests to a separate file named '\(viewInfo.name)Tests.swift'\n")
                 buffer.lines.add(testCode)
@@ -83,6 +91,7 @@ class CommandManager: NSObject, XCSourceEditorCommand {
             } catch {
                 completionHandler(CommandError.analysisFailure(error.localizedDescription))
             }
+            
         case .failure(let error):
             completionHandler(CommandError.analysisFailure(error.localizedDescription))
         }
@@ -94,15 +103,13 @@ class CommandManager: NSObject, XCSourceEditorCommand {
     ///   - completionHandler: Completion handler called when done
     private func generateUnitTests(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) {
         let buffer = invocation.buffer
-        let swiftCode = buffer.completeBuffer
+        let code = buffer.completeBuffer
         
-        let analyzer = CodeAnalyzer()
-        let analysisResult = analyzer.analyze(swiftCode)
+        let analysisResult = codeAnalyzer.analyze(code)
         
         switch analysisResult {
         case .success(let testableUnits):
-            let generator = UnitTestGenerator()
-            let testCode = generator.generateTests(for: testableUnits)
+            let testCode = unitTestGenerator.generateTests(for: testableUnits)
             buffer.lines.add("\n// MARK: - Generated Unit Tests\n")
             buffer.lines.add("// Suggestion: Move these tests to a separate test file\n")
             buffer.lines.add(testCode)
@@ -112,28 +119,30 @@ class CommandManager: NSObject, XCSourceEditorCommand {
         }
     }
     
-    /// Check if the current file is a SwiftUI view file
-    /// - Parameter code: The Swift code to check
-    /// - Returns: true if it's a SwiftUI view file
+    // MARK: - Helper Methods
+    
+    /// Check if this is a SwiftUI file
     private func isSwiftUIViewFile(_ code: String) -> Bool {
-        return code.contains("import SwiftUI") && code.contains("struct") && 
-               code.contains(": View") && code.contains("var body")
+        return code.contains("import SwiftUI") &&
+        (code.contains("struct") && code.contains(": View")) &&
+        code.contains("var body")
     }
     
-    // MARK: - Error Types
-    
-    /// Errors that can occur during command execution
-    enum CommandError: Error, LocalizedError {
-        case notSwiftUIFile
-        case analysisFailure(String)
+    /// Get the API key from shared storage
+    /// - Returns: The API key, if available
+    private func getApiKey() -> String? {
+        // Try to get the API key from shared UserDefaults
+        if let userDefaults = UserDefaults(suiteName: Constants.appGroupIdentifier) {
+            return userDefaults.string(forKey: "copilotApiKey")
+        }
         
-        var errorDescription: String? {
-            switch self {
-            case .notSwiftUIFile:
-                return "This doesn't appear to be a SwiftUI file. The extension works only with SwiftUI views."
-            case .analysisFailure(let reason):
-                return "Failed to analyze code: \(reason)"
-            }
+        // Fall back to keychain if UserDefaults doesn't have it
+        do {
+            let keychainManager = KeychainManager(serviceName: Constants.keychainServiceName)
+            return try keychainManager.getString(forAccount: Constants.apiKeyAccount)
+        } catch {
+            NSLog("Failed to get API key from keychain: \(error.localizedDescription)")
+            return nil
         }
     }
 }

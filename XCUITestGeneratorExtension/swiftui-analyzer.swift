@@ -7,6 +7,7 @@ enum SwiftUIAnalyzerError: Error {
     case missingBodyProperty
     case incompatibleViewType
     case parseFailure(String)
+    case viewNameNotFound
     
     var localizedDescription: String {
         switch self {
@@ -18,6 +19,8 @@ enum SwiftUIAnalyzerError: Error {
             return "Not a compatible SwiftUI view type"
         case .parseFailure(let details):
             return "Failed to parse SwiftUI code: \(details)"
+        case .viewNameNotFound:
+            return "Could not identify View struct name"
         }
     }
 }
@@ -53,6 +56,7 @@ public class SwiftUIAnalyzer {
         let name: String
         let stateVariables: [String: String]  // [name: type]
         let elements: [UIElement]
+        let bodyContent: String
         let isNavigationView: Bool
         let hasTabBar: Bool
         let hasAlert: Bool
@@ -64,6 +68,7 @@ public class SwiftUIAnalyzer {
             name: String,
             stateVariables: [String: String],
             elements: [UIElement],
+            bodyContent: String = "",
             isNavigationView: Bool,
             hasTabBar: Bool,
             hasAlert: Bool,
@@ -73,6 +78,7 @@ public class SwiftUIAnalyzer {
             self.name = name
             self.stateVariables = stateVariables
             self.elements = elements
+            self.bodyContent = bodyContent
             self.isNavigationView = isNavigationView
             self.hasTabBar = hasTabBar
             self.hasAlert = hasAlert
@@ -84,21 +90,15 @@ public class SwiftUIAnalyzer {
     /// Analyze SwiftUI code and extract information
     /// - Parameter code: The SwiftUI code as a string
     /// - Returns: Result with analyzed view information or error
-    func analyze(_ code: String, copilotService: CopilotService? = nil) -> Result<ViewInfo, SwiftUIAnalyzerError> {
-        
-        let analyzer = { () -> Result<ViewInfo, SwiftUIAnalyzerError> in
-            // Check if this is a SwiftUI file
-            guard code.contains("import SwiftUI") else {
-                return .failure(.incompatibleViewType)
-            }
-            
+    func analyze(_ code: String) -> Result<ViewInfo, SwiftUIAnalyzerError> {
+        // Check if this is a SwiftUI file
         guard code.contains("import SwiftUI") else {
             return .failure(.incompatibleViewType)
         }
         
         // Extract view name
         guard let viewName = extractViewName(from: code) else {
-            return .failure(.invalidStructure("Could not identify View struct name"))
+            return .failure(.viewNameNotFound)
         }
         
         // Ensure there's a body property
@@ -112,11 +112,10 @@ public class SwiftUIAnalyzer {
         // Extract state variables
         let stateVariables = extractStateVariables(from: code)
         
-        // Extract UI elements - now checks both the whole file and focused on body content
+        // Extract UI elements
         var elements = extractUIElements(from: bodyContent)
         
-        // If we didn't find elements in the body extraction (which can happen with complex layouts),
-        // fall back to analyzing the whole file
+        // If we didn't find elements in the body extraction, fall back to analyzing the whole file
         if elements.isEmpty {
             elements = extractUIElements(from: code)
         }
@@ -124,42 +123,20 @@ public class SwiftUIAnalyzer {
         // Analyze view modifiers in the entire code that might affect testing
         let (isNavigationView, hasTabBar, hasAlert, hasContextMenu) = analyzeViewModifiers(in: code)
         
-        // Extract environment objects and observed objects that might affect state
+        // Extract environment objects that might affect state
         let environmentObjects = extractEnvironmentObjects(from: code)
         
         return .success(ViewInfo(
             name: viewName,
             stateVariables: stateVariables,
             elements: elements,
+            bodyContent: bodyContent,
             isNavigationView: isNavigationView,
             hasTabBar: hasTabBar,
             hasAlert: hasAlert,
             hasContextMenu: hasContextMenu,
             environmentObjects: environmentObjects
-            ))
-        }
-        
-        let result = analyzer()
-        
-        switch result {
-        case .success:
-            return result
-        case .failure(let error) where copilotService != nil:
-            os_log("Initial analysis failed with error: %{public}@", log: OSLog.default, type: .error, error.localizedDescription)
-            
-            guard let copilotService = copilotService else {
-                return .failure(error)
-            }
-            
-            os_log("Attempting analysis with Copilot", log: OSLog.default, type: .info)
-            
-            // Use Copilot as a fallback, adjusting the prompt for the specific error
-            return analyzeWithCopilot(code: code, copilotService: copilotService)
-        case .failure(let error):
-            os_log("Initial analysis failed with error: %{public}@", log: OSLog.default, type: .error, error.localizedDescription)
-            return .failure(error)
-        }
-
+        ))
     }
     
     /// Extract the content of the body property
@@ -394,7 +371,6 @@ public class SwiftUIAnalyzer {
             let textFieldRange = match.range
             let endOfTextFieldDeclaration = min(textFieldRange.location + textFieldRange.length + 100, code.count)
             let textFieldCodeRange = NSRange(location: textFieldRange.location, length: endOfTextFieldDeclaration - textFieldRange.location)
-            
             if let textFieldCodeRange = Range(textFieldCodeRange, in: code) {
                 let textFieldCode = String(code[textFieldCodeRange])
                 let identifier = extractAccessibilityIdentifier(from: textFieldCode)
@@ -584,120 +560,6 @@ public class SwiftUIAnalyzer {
         }
         
         return modifiers
-    }
-    
-    /// Analyzes SwiftUI code using Copilot as a fallback.
-    ///
-    /// - Parameters:
-    ///   - code: The SwiftUI code to analyze.
-    ///   - copilotService: The Copilot service instance.
-    /// - Returns: A `Result` containing the `ViewInfo` on success or a `SwiftUIAnalyzerError` on failure.
-    private func analyzeWithCopilot(code: String, copilotService: CopilotService) -> Result<ViewInfo, SwiftUIAnalyzerError> {
-        var viewInfo: ViewInfo?
-        var finalResult: Result<ViewInfo, SwiftUIAnalyzerError>?
-        
-        let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
-        
-        copilotService.generateCode(prompt: "Analyze the following SwiftUI code and return a JSON representation of the UI elements, including their types, labels, and identifiers: \(code)") { result in
-            defer { dispatchGroup.leave() }
-            switch result {
-            case .success(let jsonString):
-                os_log("Successfully received JSON from Copilot: %{public}@", log: OSLog.default, type: .debug, jsonString)
-                
-                if let data = jsonString.data(using: .utf8),
-                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let viewName = json["name"] as? String,
-                   let elementsData = json["elements"] as? [[String: Any]] {
-                    
-                    let elements = elementsData.compactMap { elementData -> UIElement? in
-                        guard let typeString = elementData["type"] as? String,
-                              let label = elementData["label"] as? String else {
-                            return nil
-                        }
-                        
-                        let type: UIElement.ElementType
-                        switch typeString {
-                        case "button": type = .button
-                        case "textField": type = .textField
-                        case "secureField": type = .secureField
-                        case "text": type = .text
-                        case "toggle": type = .toggle
-                        case "picker": type = .picker
-                        case "slider": type = .slider
-                        case "navigationLink": type = .navigationLink
-                        case "list": type = .list
-                        default: type = .custom(typeString)
-                        }
-                        
-                        return UIElement(
-                            type: type,
-                            identifier: elementData["identifier"] as? String,
-                            label: label,
-                            modifiers: elementData["modifiers"] as? [String] ?? [],
-                            hasAction: elementData["hasAction"] as? Bool ?? false
-                        )
-                    }
-                    
-                    var stateVariables: [String: String] = [:]
-                    if let stateVarsData = json["stateVariables"] as? [[String: String]] {
-                        for varData in stateVarsData {
-                            if let name = varData["name"], let type = varData["type"] {
-                                stateVariables[name] = type
-                            }
-                        }
-                    }
-
-                    viewInfo = ViewInfo(
-                        name: viewName,
-                        stateVariables: stateVariables,
-                        elements: elements,
-                        isNavigationView: json["isNavigationView"] as? Bool ?? false,
-                        hasTabBar: json["hasTabBar"] as? Bool ?? false,
-                        hasAlert: json["hasAlert"] as? Bool ?? false,
-                        hasContextMenu: json["hasContextMenu"] as? Bool ?? false,
-                        environmentObjects: json["environmentObjects"] as? [String: String] ?? [:]
-                    )
-                    
-                    if let viewInfo = viewInfo {
-                        finalResult = .success(viewInfo)
-                        os_log("Successfully created ViewInfo from Copilot JSON.", log: OSLog.default, type: .debug)
-                    } else {
-                        finalResult = .failure(.parseFailure("Failed to create ViewInfo from Copilot response"))
-                        os_log("Failed to create ViewInfo from Copilot JSON.", log: OSLog.default, type: .error)
-                    }
-                } else {
-                    finalResult = .failure(.parseFailure("Invalid JSON format from Copilot"))
-                    os_log("Invalid JSON format received from Copilot.", log: OSLog.default, type: .error)
-                }
-            case .failure(let error):
-                finalResult = .failure(.parseFailure("Copilot code generation failed: \(error.localizedDescription)"))
-                os_log("Copilot code generation failed with error: %{public}@", log: OSLog.default, type: .error, error.localizedDescription)
-            }
-        }
-        
-        _ = dispatchGroup.wait(timeout: .now() + 30)
-        
-        return finalResult ?? .failure(.parseFailure("Copilot response timed out or was not processed"))
-    }
-
-}
-
-extension Dictionary {
-    func stringValue(forKey key: Key) -> String? {
-        return self[key] as? String
-    }
-
-    func boolValue(forKey key: Key) -> Bool? {
-        return self[key] as? Bool
-    }
-
-    func arrayValue(forKey key: Key) -> [Any]? {
-        return self[key] as? [Any]
-    }
-
-    func dictionaryValue(forKey key: Key) -> [String: Any]? {
-        return self[key] as? [String: Any]
     }
 }
 
